@@ -37,23 +37,23 @@ def generate_mastercard():
 def analyze_number():
     Number = (input("Enter a potential credit card number (no spaces): "))
     Digits = list(Number)
-    card_type=""
-    if Number[0]=='4' and len(Number)==16:
-    #    print ("This could be a VISA")
-        card_type="VISA"
-    elif Number[0]=='5' and len(Number)==16:
-    #    print ("This could be a Mastercard")
-        card_type = "Mastercard"
-    elif Number[0]=='6' and len(Number)==16:
-    #    print ("This could be a Discover card")
-        card_type = "Discover"
-    elif Number[0]=='3' and Number[1]=='7' and len(Number)==15:
-    #    print("This could be an American Express card")
-        card_type = "American Express"
-    elif Number[0]=='3' and (Number[1]== ('8' or '0' or '6')) and len(Number)==14:
-    #    print("This could be a Diners Club or Carte Blanche card")
-        card_type = "Diner's Club or Carte Blanche"
-
+    # Following code is not being used for now, but it allows determination of potential card type
+    # card_type=""
+    # if Number[0]=='4' and len(Number)==16:
+    #     print ("This could be a VISA")
+    #     card_type="VISA"
+    # elif Number[0]=='5' and len(Number)==16:
+    #     print ("This could be a Mastercard")
+    #     card_type = "Mastercard"
+    # elif Number[0]=='6' and len(Number)==16:
+    #     print ("This could be a Discover card")
+    #     card_type = "Discover"
+    # elif Number[0]=='3' and Number[1]=='7' and len(Number)==15:
+    #     print("This could be an American Express card")
+    #     card_type = "American Express"
+    # elif Number[0]=='3' and (Number[1]== ('8' or '0' or '6')) and len(Number)==14:
+    #     print("This could be a Diners Club or Carte Blanche card")
+    #     card_type = "Diner's Club or Carte Blanche"
     return Digits
 
 def Luhn_analyzer(Digits):
