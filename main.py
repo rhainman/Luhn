@@ -15,11 +15,6 @@ def main():
         else:
             print ("Enter only 1 or 2. Hit Enter to exit.")
 
-def random_with_N_digits(n):
-    range_start = 10**(n-1)
-    range_end = (10**n)-1
-    return randint(range_start, range_end)
-
 def generate_mastercard():
     digit_sum = 11111111111
     while (digit_sum % 10) != 0:
