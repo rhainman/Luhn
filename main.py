@@ -16,7 +16,7 @@ def main():
             print ("Enter only 1 or 2. Hit Enter to exit.")
 
 def generate_mastercard():
-    digit_sum = 11111111111
+    digit_sum = 1
     while (digit_sum % 10) != 0:
         generated_numbers = random.randint((10 ** (13)), ((10 ** 14) - 1))
         potential_number = "55" + str(generated_numbers)
@@ -31,7 +31,7 @@ def generate_mastercard():
         digit_sum = 0
         for i in range(len(potential_number_test)):
             digit_sum = digit_sum + potential_number_test[i]
-    print ("This is a valid Mastercard number:", potential_number)
+    print ("Here is a valid Mastercard number: ",potential_number[0:4], potential_number[4:8], potential_number[8:12], potential_number[12:16] )
     print ("")
 
 def analyze_number():
