@@ -4,17 +4,24 @@ def main():
     while True:
         print ("Welcome to Rhain's credit card number validation tool!")
         selection=input("To validate a credit card number, enter 1. To generate a valid credit card number, enter 2. To exit, hit Enter ")
+        print("")
         if selection == "1":
             Digits=analyze_number()
             Luhn_analyzer(Digits)
         elif selection == "2":
-            type = input("To generate a Mastercard number, enter 1. To generate a VISA number, enter 2. To generate an AMEX number, enter 3 ")
+            type = input("To generate a Mastercard number, enter 1. To generate a VISA number, enter 2. To generate an AMEX number, enter 3. To exit, hit Enter ")
+            print("")
             if type=="1":
                 generate_mastercard()
             elif type=="2":
                 generate_visa()
             elif type=="3":
                 generate_amex()
+            elif selection == "":
+                print("Exiting. Thank you!")
+                break
+            else:
+                print("Enter only 1, 2 or 3. Hit Enter to exit.")
         elif selection == "":
             print ("Exiting. Thank you!")
             break
