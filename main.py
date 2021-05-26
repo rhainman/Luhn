@@ -33,7 +33,6 @@ def generate_mastercard():
     while (digit_sum % 10) != 0:
         generated_numbers = random.randint((10 ** 13), (10 ** 14 - 1))
         potential_number = "55" + str(generated_numbers)
-        length = len(potential_number)
         potential_number_test = [int(i) for i in potential_number]
         for i in range(len(potential_number_test))[-2::-2]:
             digit_product = potential_number_test[i] * 2
@@ -52,7 +51,6 @@ def generate_visa():
     while (digit_sum % 10) != 0:
         generated_numbers = random.randint((10 ** 14), (10 ** 15 - 1))
         potential_number = "4" + str(generated_numbers)
-        length = len(potential_number)
         potential_number_test = [int(i) for i in potential_number]
         for i in range(len(potential_number_test))[-2::-2]:
             digit_product = potential_number_test[i] * 2
@@ -71,7 +69,6 @@ def generate_amex():
     while (digit_sum % 10) != 0:
         generated_numbers = random.randint((10 ** 12), (10 ** 13 - 1))
         potential_number = "37" + str(generated_numbers)
-        length = len(potential_number)
         potential_number_test = [int(i) for i in potential_number]
         for i in range(len(potential_number_test))[-2::-2]:
             digit_product = potential_number_test[i] * 2
@@ -108,7 +105,6 @@ def analyze_number():
     return Digits
 
 def Luhn_analyzer(Digits):
-    length=len(Digits)
     Digits = [int(i) for i in Digits]
     for i in range(len(Digits))[-2::-2]:
         digit_product = Digits[i]*2
