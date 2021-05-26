@@ -3,12 +3,18 @@ import random
 def main():
     while True:
         print ("Welcome to Rhain's credit card number validation tool!")
-        selection=input("To validate a credit card number, enter 1. To generate a valid Mastercard number, enter 2. To exit, hit Enter ")
+        selection=input("To validate a credit card number, enter 1. To generate a valid credit card number, enter 2. To exit, hit Enter ")
         if selection == "1":
             Digits=analyze_number()
             Luhn_analyzer(Digits)
         elif selection == "2":
-            generate_mastercard()
+            type = input("To generate a Mastercard number, enter 1. To generate a VISA number, enter 2. To generate an AMEX number, enter 3 ")
+            if type=="1":
+                generate_mastercard()
+            elif type=="2":
+                generate_visa()
+            elif type=="3":
+                generate_amex()
         elif selection == "":
             print ("Exiting. Thank you!")
             break
@@ -18,7 +24,7 @@ def main():
 def generate_mastercard():
     digit_sum = 1
     while (digit_sum % 10) != 0:
-        generated_numbers = random.randint((10 ** (13)), ((10 ** 14) - 1))
+        generated_numbers = random.randint((10 ** 13), (10 ** 14 - 1))
         potential_number = "55" + str(generated_numbers)
         length = len(potential_number)
         potential_number_test = [int(i) for i in potential_number]
@@ -32,6 +38,44 @@ def generate_mastercard():
         for i in range(len(potential_number_test)):
             digit_sum = digit_sum + potential_number_test[i]
     print ("Here is a valid Mastercard number: ",potential_number[0:4], potential_number[4:8], potential_number[8:12], potential_number[12:16] )
+    print ("")
+
+def generate_visa():
+    digit_sum = 1
+    while (digit_sum % 10) != 0:
+        generated_numbers = random.randint((10 ** 14), (10 ** 15 - 1))
+        potential_number = "4" + str(generated_numbers)
+        length = len(potential_number)
+        potential_number_test = [int(i) for i in potential_number]
+        for i in range(len(potential_number_test))[-2::-2]:
+            digit_product = potential_number_test[i] * 2
+            if digit_product > 9:
+                digit_product_list = [int(x) for x in str(digit_product)]
+                digit_product = digit_product_list[0] + digit_product_list[1]
+            potential_number_test[i] = digit_product
+        digit_sum = 0
+        for i in range(len(potential_number_test)):
+            digit_sum = digit_sum + potential_number_test[i]
+    print ("Here is a valid VISA number: ",potential_number[0:4], potential_number[4:8], potential_number[8:12], potential_number[12:16] )
+    print ("")
+
+def generate_amex():
+    digit_sum = 1
+    while (digit_sum % 10) != 0:
+        generated_numbers = random.randint((10 ** 12), (10 ** 13 - 1))
+        potential_number = "37" + str(generated_numbers)
+        length = len(potential_number)
+        potential_number_test = [int(i) for i in potential_number]
+        for i in range(len(potential_number_test))[-2::-2]:
+            digit_product = potential_number_test[i] * 2
+            if digit_product > 9:
+                digit_product_list = [int(x) for x in str(digit_product)]
+                digit_product = digit_product_list[0] + digit_product_list[1]
+            potential_number_test[i] = digit_product
+        digit_sum = 0
+        for i in range(len(potential_number_test)):
+            digit_sum = digit_sum + potential_number_test[i]
+    print ("Here is a valid AMEX number: ",potential_number[0:4], potential_number[4:10], potential_number[10:15])
     print ("")
 
 def analyze_number():
